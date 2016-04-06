@@ -1,0 +1,7 @@
+val lines = sc.textFile("data_input")
+val cols = lines.map(_.split("\t"))
+val onehop = cols.map(c => c(0) -> c(1))
+val rev = cols.map(c => c(1) -> c(0))
+val twohopkey = rev.join(onehop)
+val twohop = twohopkey.map(c => (c._2._1, c._2._2))
+val result = onehop union twohop

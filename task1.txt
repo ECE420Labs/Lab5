@@ -1,0 +1,2 @@
+val lines = sc.textFile("data_input")
+val result = lines.map(_.split("\t")(1)).map(word => (word, 1)).reduceByKey(_ + _).map(x => x._2).max()
